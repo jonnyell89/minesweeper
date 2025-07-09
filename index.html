@@ -4,10 +4,23 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Minesweeper</title>
   </head>
   <body>
-    <div id="app"></div>
+    <header>
+      <h1>MINESWEEPER</h1>
+    </header>
+    <main class="container">
+      <section class="topContainer">
+        <div class="topContainer__counter"></div>
+        <button class="topContainer__btn"></button>
+        <div class="topContainer__timer"></div>
+      </section>
+      <section class="bottomContainer">
+        <div class="bottomContainer__grid"></div>
+      </section>
+    </main>
+    <!-- <footer></footer> -->
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
