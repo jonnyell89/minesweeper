@@ -1,3 +1,4 @@
-const GRID_WIDTH = 9;
-const GRID_HEIGHT = 9;
-const MINE_COUNT = 10;
+export const CELL_SIZE: string = "30px";
+export const GRID_WIDTH: number = 9;
+export const GRID_HEIGHT: number = 9;
+export const MINE_COUNT: number = 10;

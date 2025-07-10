@@ -27,6 +27,9 @@ export function createCell(gridElement: HTMLElement, y: number, x: number): Cell
 
     cell.classList.add("bottomContainer__btn");
 
+    cell.dataset.row = y.toString(); // Sets dataset attributes.
+    cell.dataset.col = x.toString(); // Sets dataset attributes.
+
     gridElement.appendChild(cell);
 
     return {

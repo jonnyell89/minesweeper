@@ -11,6 +11,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --cell-size: 30px;
+  --grid-width: 9;
+  --grid-height: 9;
 }
 
 body {
@@ -26,7 +30,7 @@ header {
   justify-content: center;
   align-items: center;
   
-  width: 320px;  
+  width: calc(var(--grid-width) * var(--cell-size));
 }
 
 .container {
@@ -35,17 +39,21 @@ header {
   justify-content: center;
   align-items: center;
 
-  width: 320px;
-  height: 480px;
+  width: max-content;
+  height: max-content;
   margin: auto;
-  row-gap: 10px;
+
+  padding-top: 0.7rem;
+  padding-right: 1rem;
+  padding-bottom: 0.7rem;
+  padding-left: 1rem;
+  row-gap: 0.7rem;
 
   background-color: #484e56;
-  border-radius: 2px;
-  border-top: 8px solid #7a8088;
-  border-right: 8px solid #20262e;
-  border-bottom: 8px solid #20262e;
-  border-left: 8px solid #7a8088;
+  border-top: 7px solid #7a8088;
+  border-right: 7px solid #20262e;
+  border-bottom: 7px solid #20262e;
+  border-left: 7px solid #7a8088;
 }
 
 .topContainer {
@@ -54,15 +62,14 @@ header {
   justify-content: space-between;
   align-items: center;
 
-  width: 280px;
-  height: 70px;
+  width: calc(var(--grid-width) * var(--cell-size));
+  height: calc(var(--grid-width) * var(--cell-size) / 4);
 
-  background-color: #464c54;
-  border-radius: 2px;
-  border-top: 8px solid #20262e;
-  border-right: 8px solid #7a8088;
-  border-bottom: 8px solid #7a8088;
-  border-left: 8px solid #20262e;
+  background-color: #484e56;
+  border-top: 7px solid #20262e;
+  border-right: 7px solid #7a8088;
+  border-bottom: 7px solid #7a8088;
+  border-left: 7px solid #20262e;
 
   &__counter {
     display: flex;
@@ -122,9 +129,11 @@ header {
 
 .bottomContainer {
   display: flex;
+  justify-content: center;
+  align-items: center;
 
-  width: 280px;
-  height: 350px;
+  width: max-content;
+  height: max-content;
 
   background-color: #484e56;
   border-top: 7px solid #20262e;
@@ -135,10 +144,11 @@ header {
   &__grid {
     display: grid;
 
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(var(--grid-width), var(--cell-size));
+    grid-template-rows: repeat(var(--grid-height), var(--cell-size));
 
-    width: 270px;
-    height: 270px;
+    width: max-content;
+    height: max-content;
   }
 
   &__btn {
@@ -146,16 +156,16 @@ header {
     justify-content: center;
     align-items: center;
 
-    width: 30px;
-    height: 30px;
+    width: var(--cell-size);
+    height: var(--cell-size);
 
     font-size: xx-large;
     font-weight: bolder;
 
     background-color: #4e545c;
-    border-top: 5px solid #727880;
-    border-right: 5px solid #242a32;
-    border-bottom: 5px solid #242a32;
-    border-left: 5px solid #727880;    
+    border-top: 4px solid #727880;
+    border-right: 4px solid #242a32;
+    border-bottom: 4px solid #242a32;
+    border-left: 4px solid #727880;    
   }
 }
