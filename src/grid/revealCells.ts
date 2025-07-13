@@ -1,10 +1,11 @@
 import { Cell } from "../types/cell";
+import { getCell } from "../utils/getCell";
 
 export function revealCells(grid: Cell[][], rowIndex: number, colIndex: number): void {
 
-    if (rowIndex < 0 || rowIndex >= grid.length || colIndex < 0 || colIndex >= grid[0].length) return; // CELL OUT OF BOUNDS
+    const cell: Cell | null = getCell(grid, rowIndex, colIndex); 
 
-    const cell: Cell = grid[rowIndex][colIndex];
+    if (!cell) return; // CELL OUT OF BOUNDS
 
     if (!cell.isHidden) return; // CELL ALREADY REVEALED
 

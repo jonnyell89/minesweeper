@@ -1,5 +1,6 @@
 import { Cell } from "../types/cell";
 import { Mine } from "../types/mine";
+import { getCell } from "../utils/getCell";
 
 export function assignNumbers(grid: Cell[][], mines: Mine[]): Cell[][] {
     
@@ -23,10 +24,9 @@ function incrementAdjacentMines(grid: Cell[][], rowIndex: number, colIndex: numb
             const ySubgrid = rowIndex + y;
             const xSubgrid = colIndex + x;
 
-            if (ySubgrid < 0 || ySubgrid >= grid.length ||
-                xSubgrid < 0 || xSubgrid >= grid[0].length) continue;
+            const cell: Cell | null = getCell(grid, ySubgrid, xSubgrid);
 
-            const cell = grid[ySubgrid][xSubgrid];
+            if (!cell) continue; // CELL OUT OF BOUNDS
             
             if (!cell.hasMine) cell.adjacentMines++;
         }
