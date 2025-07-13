@@ -1,8 +1,10 @@
 import type { Cell } from "../types/cell"
 
 export function createGrid(gridElement: HTMLElement, gridWidth: number, gridHeight: number): Cell[][] {
-
+    
     const grid: Cell[][] = [];
+
+    gridElement.innerHTML = "";
 
     for (let y = 0; y < gridHeight; y++) {
 

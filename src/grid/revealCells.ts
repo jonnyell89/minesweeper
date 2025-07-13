@@ -1,4 +1,5 @@
 import { Cell } from "../types/cell";
+import { revealMines } from "../ui/revealMines";
 import { getCell } from "../utils/getCell";
 
 export function revealCells(grid: Cell[][], rowIndex: number, colIndex: number): void {
@@ -9,7 +10,7 @@ export function revealCells(grid: Cell[][], rowIndex: number, colIndex: number):
 
     if (!cell.isHidden) return; // CELL ALREADY REVEALED
 
-    if (cell.hasMine) return; // END GAME CONDITION MET
+    if (cell.hasMine) return revealMines(grid); // END GAME CONDITION MET
 
     if (cell.adjacentMines > 0) return revealCell(cell); // CELL ADJACENT TO MINE
 
@@ -19,8 +20,8 @@ export function revealCells(grid: Cell[][], rowIndex: number, colIndex: number):
         
         for (let x = -1; x <= 1; x++) {
 
-            const ySubgrid: number = rowIndex + y;
-            const xSubgrid: number = colIndex + x;
+            const ySubgrid: number = cell.rowIndex + y;
+            const xSubgrid: number = cell.colIndex + x;
 
             revealCells(grid, ySubgrid, xSubgrid);
         }
