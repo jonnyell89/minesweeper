@@ -1,19 +1,20 @@
 import { Cell } from "../types/cell";
+import { Mine } from "../types/mine";
 
-export function assignAdjacentNumbers(grid: Cell[][], mines: { rowIndex: number, colIndex: number }[]): Cell[][] {
+export function assignNumbers(grid: Cell[][], mines: Mine[]): Cell[][] {
     
     for (let i = 0; i < mines.length; i++) {
 
-        const y = mines[i].rowIndex;
-        const x = mines[i].colIndex;
+        const y: number = mines[i].rowIndex;
+        const x: number = mines[i].colIndex;
 
-        incrementAdjacentCells(grid, y, x);
+        incrementAdjacentMines(grid, y, x);
     }
 
     return grid;
 }
 
-function incrementAdjacentCells(grid: Cell[][], rowIndex: number, colIndex: number): void {
+function incrementAdjacentMines(grid: Cell[][], rowIndex: number, colIndex: number): void {
 
     for (let y = -1; y <= 1; y++) {
         

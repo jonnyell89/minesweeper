@@ -21,9 +21,9 @@ export function createGrid(gridElement: HTMLElement, gridWidth: number, gridHeig
     return grid;
 }
 
-export function createCell(gridElement: HTMLElement, y: number, x: number): Cell {
+function createCell(gridElement: HTMLElement, y: number, x: number): Cell {
 
-    const cell = document.createElement("button");
+    const cell: HTMLButtonElement = document.createElement("button");
 
     cell.classList.add("bottomContainer__btn");
 

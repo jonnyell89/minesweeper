@@ -1,6 +1,10 @@
+import { assignMines } from "../grid/assignMines";
+import { assignNumbers } from "../grid/assignNumbers";
 import { createGrid } from "../grid/createGrid";
-import { CELL_SIZE, GRID_HEIGHT, GRID_WIDTH } from "../state";
+import { CELL_SIZE, GRID_HEIGHT, GRID_WIDTH, MINE_COUNT } from "../state";
 import type { Cell } from "../types/cell";
+import { Mine } from "../types/mine";
+import { getMineCoordinates } from "../utils/getMineCoordinates";
 import { selectElement } from "../utils/selectElement";
 
 export function initGrid(): Cell[][] {
@@ -9,7 +13,13 @@ export function initGrid(): Cell[][] {
 
     const grid: Cell[][] = createGrid(bottomContainerGrid, GRID_WIDTH, GRID_HEIGHT) // Render
 
-    return grid;
+    const mines: Mine[] = getMineCoordinates(grid, MINE_COUNT);
+
+    const gridWithMines: Cell[][] = assignMines(grid, mines);
+
+    const gridWithMinesAndNumbers: Cell[][] = assignNumbers(gridWithMines, mines);
+
+    return gridWithMinesAndNumbers;
 }
 
 export function initDocumentRoot(): void {
