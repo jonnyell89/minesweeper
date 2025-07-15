@@ -16,8 +16,24 @@ export function revealFlags(grid: Cell[][]): void {
     }
 }
 
+export function revealFlags(grid: Cell[][]): void {
+
+    grid.forEach(row => {
+
+        row.forEach(cell => {
+
+            if (cell.isHidden && cell.hasMine) {
+                
+                revealFlag(cell);
+            }
+        })
+    })
+}
+
 function revealFlag(cell: Cell): void {
 
-    cell.cellElement.textContent = "🚩";
-    cell.hasFlag = true;   
+    cell.isHidden = false;
+    cell.hasFlag = true;
+
+    cell.cellElement.textContent = "🚩";   
 }

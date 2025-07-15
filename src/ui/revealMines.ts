@@ -1,3 +1,4 @@
+import { revealCell } from "../grid/revealCells";
 import { Cell } from "../types/cell";
 import { getCell } from "../utils/getCell";
 
@@ -17,6 +18,8 @@ export function revealMines(grid: Cell[][]): void {
 }
 
 export function revealMine(cell: Cell): void {
+
+    revealCell(cell);
 
     cell.cellElement.textContent = "💣";
     cell.cellElement.style.backgroundColor = "#bc171a";

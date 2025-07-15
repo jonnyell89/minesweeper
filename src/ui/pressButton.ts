@@ -1,8 +1,6 @@
 import { Cell } from "../types/cell";
 
-export function revealedCell(cell: Cell): void {
-
-    cell.isHidden = false;
+export function pressButton(cell: Cell): void {
 
     cell.cellElement.style.backgroundColor = "#384048";
     cell.cellElement.style.borderTop = "none";
