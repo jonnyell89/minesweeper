@@ -7,9 +7,9 @@ import { Mine } from "../types/mine";
 import { getMineCoordinates } from "../utils/getMineCoordinates";
 import { selectElement } from "../utils/selectElement";
 import { attachLeftClickEvent } from "../events/attachLeftClickEvent";
-import { attachRightClickEvent, attachRightClickEvents } from "../events/attachRightClickEvent";
+import { attachRightClickEvent } from "../events/attachRightClickEvent";
 
-export function initGrid(): void {
+export function initGrid(): Cell[][] {
 
     const bottomContainerGrid = selectElement<HTMLDivElement>(".bottomContainer__grid"); // Select
 
@@ -17,13 +17,15 @@ export function initGrid(): void {
 
     const mines: Mine[] = getMineCoordinates(grid, MINE_COUNT); // Build
 
-    const gridWithMines: Cell[][] = assignMines(grid, mines); // Build
+    assignMines(grid, mines); // Build
 
-    const gridWithMinesAndNumbers: Cell[][] = assignNumbers(gridWithMines, mines); // Build
+    assignNumbers(grid, mines); // Build
 
-    attachLeftClickEvent(gridWithMinesAndNumbers); // Attach
+    attachLeftClickEvent(grid); // Attach
 
-    attachRightClickEvents(gridWithMinesAndNumbers); // Attach
+    attachRightClickEvent(grid); // Attach
+
+    return grid;
 }
 
 export function initDocumentRoot(): void {

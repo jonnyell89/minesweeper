@@ -2,7 +2,7 @@ import type { Cell } from "../types/cell";
 import type { Mine } from "../types/mine";
 import { getCell } from "../utils/getCell";
 
-export function assignMines(grid: Cell[][], mines: Mine[]): Cell[][] {
+export function assignMines(grid: Cell[][], mines: Mine[]): void {
 
     for (const mine of mines) {
         
@@ -14,6 +14,4 @@ export function assignMines(grid: Cell[][], mines: Mine[]): Cell[][] {
 
         console.log(`Mine assigned to cell at grid[${cell.rowIndex}][${cell.colIndex}].`)
     }
-
-    return grid;
 }

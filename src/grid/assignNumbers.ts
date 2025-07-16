@@ -2,7 +2,7 @@ import { Cell } from "../types/cell";
 import { Mine } from "../types/mine";
 import { getCell } from "../utils/getCell";
 
-export function assignNumbers(grid: Cell[][], mines: Mine[]): Cell[][] {
+export function assignNumbers(grid: Cell[][], mines: Mine[]): void {
     
     for (let i = 0; i < mines.length; i++) {
 
@@ -11,8 +11,6 @@ export function assignNumbers(grid: Cell[][], mines: Mine[]): Cell[][] {
 
         incrementAdjacentMines(grid, y, x);
     }
-
-    return grid;
 }
 
 function incrementAdjacentMines(grid: Cell[][], rowIndex: number, colIndex: number): void {

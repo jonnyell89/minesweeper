@@ -3,4 +3,4 @@ import './style.scss'
 
 initDocumentRoot();
 
-initGrid();
+const grid = initGrid();
