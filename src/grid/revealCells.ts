@@ -1,32 +1,38 @@
 import { Cell } from "../types/cell";
-import { revealMines } from "../ui/revealMines";
 import { revealNumber } from "../ui/revealNumber";
 import { getCell } from "../utils/getCell";
+import { revealMine } from "../ui/revealMine";
+import { pressButton } from "../ui/pressButton";
 
-export function revealCells(grid: Cell[][], rowIndex: number, colIndex: number): void {
-
-    const cell: Cell | null = getCell(grid, rowIndex, colIndex); 
-
-    if (!cell) return; // CELL OUT OF BOUNDS
+export function revealCells(grid: Cell[][], cell: Cell): void {
 
     if (!cell.isHidden) return; // CELL ALREADY REVEALED
 
     if (cell.hasFlag) return; // CELL CONTAINS FLAG
 
-    if (cell.hasMine) return revealMines(grid); // END GAME CONDITION MET
+    if (cell.hasMine) return revealMine(cell); // END GAME CONDITION MET
 
     if (cell.adjacentMines > 0) return revealNumber(cell); // CELL ADJACENT TO MINE
 
     revealCell(cell);
 
+    revealAdjacentCells(grid, cell); // Contains recursive call to revealCells function.
+}
+
+export function revealAdjacentCells(grid: Cell[][], cell: Cell): void {
+
     for (let y = -1; y <= 1; y++) {
         
         for (let x = -1; x <= 1; x++) {
 
-            const ySubgrid: number = cell.rowIndex + y;
-            const xSubgrid: number = cell.colIndex + x;
+            const yAdjacentCell: number = cell.rowIndex + y;
+            const xAdjacentCell: number = cell.colIndex + x;
 
-            revealCells(grid, ySubgrid, xSubgrid);
+            const adjacentCell: Cell | null = getCell(grid, yAdjacentCell, xAdjacentCell);
+
+            if (!adjacentCell) continue; // CELL OUT OF BOUNDS
+
+            revealCells(grid, adjacentCell);
         }
     }
 }
@@ -34,4 +40,6 @@ export function revealCells(grid: Cell[][], rowIndex: number, colIndex: number):
 export function revealCell(cell: Cell): void {
 
     cell.isHidden = false;
+
+    pressButton(cell);
 }

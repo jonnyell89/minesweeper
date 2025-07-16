@@ -1,6 +1,6 @@
 import { Cell } from "../types/cell";
 import { Mine } from "../types/mine";
-import { getCell } from "./getCell";
+import { getMine } from "./getMine";
 import { getRandomCoordinates } from "./getRandomCoordinates";
 
 export function getMineCoordinates(grid: Cell[][], mineCount: number): Mine[] {
@@ -11,11 +11,12 @@ export function getMineCoordinates(grid: Cell[][], mineCount: number): Mine[] {
 
         const [yRandom, xRandom]: [number, number] = getRandomCoordinates(grid[0].length, grid.length);
 
-        const cell: Cell | null = getCell(grid, yRandom, xRandom);
+        const mine: Mine = getMine(yRandom, xRandom);
 
-        if (!cell) continue; // CELL OUT OF BOUNDS
+        if (!mines.includes(mine)) {
 
-        if (!cell.hasMine) mines.push({ rowIndex: yRandom, colIndex: xRandom });
+            mines.push(mine)
+        };
     }
 
     return mines;
