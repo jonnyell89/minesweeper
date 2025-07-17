@@ -7,7 +7,7 @@ export function revealMines(grid: Cell[][]): void {
 
         row.forEach(cell => {
 
-            if (cell.hasMine) {
+            if (cell.mine !== null) {
                 
                 revealMine(cell);
             }

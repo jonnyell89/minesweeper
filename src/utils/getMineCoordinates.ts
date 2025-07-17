@@ -11,12 +11,14 @@ export function getMineCoordinates(grid: Cell[][], mineCount: number): Mine[] {
 
         const [yRandom, xRandom]: [number, number] = getRandomCoordinates(grid[0].length, grid.length);
 
-        const mine: Mine = getMine(yRandom, xRandom);
+        const isDuplicate = mines.some(m => m.rowIndex === yRandom && m.colIndex === xRandom);
 
-        if (!mines.includes(mine)) {
+        if (!isDuplicate) {
 
-            mines.push(mine)
-        };
+            const mine: Mine = getMine(yRandom, xRandom);
+            
+            mines.push(mine);
+        }
     }
 
     return mines;

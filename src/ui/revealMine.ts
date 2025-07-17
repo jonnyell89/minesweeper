@@ -5,7 +5,9 @@ export function revealMine(cell: Cell): void {
 
     revealCell(cell);
 
-    cell.cellElement.textContent = "💣";
-    cell.cellElement.style.backgroundColor = "#bc171a";
-    cell.cellElement.style.border = "2px solid #242424";    
+    if (cell.mine !== null) {
+
+        cell.cellElement.textContent = cell.mine.icon;
+        cell.cellElement.classList = "revealed-mine";
+    }    
 }

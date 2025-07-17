@@ -4,8 +4,6 @@ export function createGrid(gridElement: HTMLElement, gridWidth: number, gridHeig
     
     const grid: Cell[][] = [];
 
-    gridElement.innerHTML = "";
-
     for (let y = 0; y < gridHeight; y++) {
 
         const row: Cell[] = [];
@@ -39,8 +37,8 @@ function createCell(gridElement: HTMLElement, y: number, x: number): Cell {
         rowIndex: y, 
         colIndex: x, 
         isHidden: true, 
-        hasFlag: false, 
-        hasMine: false, 
+        flag: null, 
+        mine: null, 
         adjacentMines: 0,
     }
 }

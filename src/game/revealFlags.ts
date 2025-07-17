@@ -7,7 +7,7 @@ export function revealFlags(grid: Cell[][]): void {
 
         row.forEach(cell => {
 
-            if (cell.isHidden && cell.hasMine) {
+            if (cell.isHidden && cell.mine !== null) {
                 
                 revealFlag(cell);
             }

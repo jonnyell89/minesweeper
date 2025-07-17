@@ -10,7 +10,7 @@ export function assignMines(grid: Cell[][], mines: Mine[]): void {
 
         if (!cell) continue; // CELL OUT OF BOUNDS
 
-        cell.hasMine = true;
+        cell.mine = mine;
 
         console.log(`Mine assigned to cell at grid[${cell.rowIndex}][${cell.colIndex}].`)
     }

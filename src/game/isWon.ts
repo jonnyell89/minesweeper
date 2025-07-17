@@ -4,7 +4,7 @@ export function isWon(grid: Cell[][]): boolean {
     
     return grid.every(row => 
 
-        row.every(cell => cell.hasMine || !cell.isHidden)
+        row.every(cell => cell.mine !== null || !cell.isHidden)
     )
 }
 

@@ -8,9 +8,9 @@ export function revealCells(grid: Cell[][], cell: Cell): void {
 
     if (!cell.isHidden) return; // CELL ALREADY REVEALED
 
-    if (cell.hasFlag) return; // CELL CONTAINS FLAG
+    if (cell.flag !== null) return; // CELL CONTAINS FLAG
 
-    if (cell.hasMine) return revealMine(cell); // END GAME CONDITION MET
+    if (cell.mine !== null) return revealMine(cell); // CELL CONTAINS MINE
 
     if (cell.adjacentMines > 0) return revealNumber(cell); // CELL ADJACENT TO MINE
 

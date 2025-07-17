@@ -18,6 +18,7 @@ export function attachRightClickEvent(grid: Cell[][]): void {
 export function handleRightClickEvent(event: MouseEvent, cell: Cell): void {
 
     event.preventDefault();
+    
     alert(`Right-clicked on cell ${cell.rowIndex}, ${cell.colIndex}`);
 
     // event.preventDefault();

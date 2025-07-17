@@ -13,6 +13,8 @@ export function initGrid(): Cell[][] {
 
     const bottomContainerGrid = selectElement<HTMLDivElement>(".bottomContainer__grid"); // Select
 
+    bottomContainerGrid.innerHTML = ""; // Clears bottomContainer__grid
+
     const grid: Cell[][] = createGrid(bottomContainerGrid, GRID_WIDTH, GRID_HEIGHT) // Render
 
     const mines: Mine[] = getMineCoordinates(grid, MINE_COUNT); // Build
