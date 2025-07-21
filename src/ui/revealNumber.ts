@@ -1,6 +1,6 @@
 import { revealCell } from "../grid/revealCells";
 import { Cell } from "../types/cell";
-import { pressButton } from "./pressButton";
+import { pressButton } from "./revealedBlank";
 
 export function revealNumber(cell: Cell): void {
 

@@ -16,6 +16,8 @@ export function revealRemainingMines(grid: Cell[][], mines: Mine[]): void {
     }
 }
 
+
+
 // export function revealMines(grid: Cell[][]): void {
 //     for (let y = 0; y < grid.length; y++) {
 //         for (let x = 0; x < grid[0].length; x++) {

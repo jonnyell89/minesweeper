@@ -1,23 +1,11 @@
+import { Flag } from "../types/flag";
 import { Mine } from "../types/mine";
 
 export let startGame: boolean = false;
 export let endGame: boolean = false;
 
-export let flagCount: number = 0;
-
 export let remainingMines: Mine[] = [];
-
-export function getFlagCount(): number {
-    return flagCount;
-}
-
-export function incrementFlagCount(): void {
-    flagCount++;
-}
-
-export function decrementFlagCount(): void {
-    flagCount--;
-}
+export let plantedFlags: Flag[] = [];
 
 export function getRemainingMineCount(): number {
     return remainingMines.length;
@@ -37,6 +25,28 @@ export function addMine(mine: Mine): void {
 
 export function removeMine(mine: Mine): void{
     remainingMines = remainingMines.filter(
-        m => m.rowIndex === mine.rowIndex || m.colIndex === mine.colIndex
+        rm => rm.rowIndex !== mine.rowIndex || rm.colIndex !== mine.colIndex
+    )
+}
+
+export function getPlantedFlagCount(): number {
+    return plantedFlags.length;
+}
+
+export function getPlantedFlags(): Flag[] {
+    return plantedFlags;
+}
+
+export function clearPlantedFlags(): void {
+    plantedFlags = [];
+}
+
+export function addFlag(flag: Flag): void {
+    plantedFlags.push(flag);
+}
+
+export function removeFlag(flag: Flag): void {
+    plantedFlags = plantedFlags.filter(
+        pf => pf.rowIndex !== flag.rowIndex || pf.colIndex !== flag.colIndex
     )
 }

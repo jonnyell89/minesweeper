@@ -8,6 +8,6 @@ export function revealMine(cell: Cell): void {
     if (cell.mine !== null) {
 
         cell.cellElement.textContent = cell.mine.icon;
-        cell.cellElement.classList = "revealed-mine";
+        cell.cellElement.classList.add("revealed-mine");
     }    
 }

@@ -1,19 +1,22 @@
 import { Cell } from "../types/cell";
+import { Mine } from "../types/mine";
 import { revealFlag } from "../ui/revealFlag";
+import { getCell } from "../utils/getCell";
 
-export function revealFlags(grid: Cell[][]): void {
+export function revealFlags(grid: Cell[][], mines: Mine[]): void {
 
-    grid.forEach(row => {
+    for (const mine of mines) {
 
-        row.forEach(cell => {
+        const cell: Cell | null = getCell(grid, mine.rowIndex, mine.colIndex);
 
-            if (cell.isHidden && cell.mine !== null) {
-                
-                revealFlag(cell);
-            }
-        })
-    })
+        if (cell !== null && cell.mine !== null) {
+
+            revealFlag(cell);
+        }
+    }
 }
+
+
 
 // export function revealFlags(grid: Cell[][]): void {
 //     for (let y = 0; y < grid.length; y++) {
@@ -23,4 +26,14 @@ export function revealFlags(grid: Cell[][]): void {
 //             if (cell.isHidden && cell.hasMine) revealFlag(cell);
 //         }
 //     }
+// }
+
+// export function revealFlags(grid: Cell[][]): void {
+//     grid.forEach(row => {
+//         row.forEach(cell => {
+//             if (cell.isHidden && cell.mine !== null) {
+//                 revealFlag(cell);
+//             }
+//         })
+//     })
 // }

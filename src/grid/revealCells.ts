@@ -2,7 +2,6 @@ import { Cell } from "../types/cell";
 import { revealNumber } from "../ui/revealNumber";
 import { getCell } from "../utils/getCell";
 import { revealMine } from "../ui/revealMine";
-import { pressButton } from "../ui/pressButton";
 
 export function revealCells(grid: Cell[][], cell: Cell): void {
 
@@ -40,8 +39,4 @@ export function revealAdjacentCells(grid: Cell[][], cell: Cell): void {
 export function revealCell(cell: Cell): void {
 
     cell.isHidden = false;
-
-    pressButton(cell);
-
-    console.log(cell);
 }

@@ -1,9 +1,8 @@
-import { decrementFlagCount, incrementFlagCount } from "../state";
 import { Cell } from "../types/cell";
 
 export function toggleFlag(cell: Cell): void {
 
-    console.log(`Before toggle: isHidden=${cell.isHidden}, hasFlag=${cell.hasFlag}, content=${cell.cellElement.textContent}`);
+    console.log(`Before toggle: isHidden=${cell.isHidden}, hasFlag=${cell.flag !== null}, content=${cell.cellElement.textContent}`);
 
     if (cell.isHidden && cell.flag === null) {
 
@@ -19,5 +18,5 @@ export function toggleFlag(cell: Cell): void {
     
     }
 
-    console.log(`After toggle: isHidden=${cell.isHidden}, hasFlag=${cell.hasFlag}, content=${cell.cellElement.textContent}`);
+    console.log(`After toggle: isHidden=${cell.isHidden}, hasFlag=${cell.flag !== null}, content=${cell.cellElement.textContent}`);
 }
