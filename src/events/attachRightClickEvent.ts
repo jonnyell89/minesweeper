@@ -1,6 +1,6 @@
-import { getFlagCount } from "../state";
+// import { getFlagCount } from "../state";
 import { Cell } from "../types/cell";
-import { toggleFlag } from "../ui/toggleFlag";
+// import { toggleFlag } from "../ui/toggleFlag";
 
 export function attachRightClickEvent(grid: Cell[][]): void {
 
@@ -11,6 +11,8 @@ export function attachRightClickEvent(grid: Cell[][]): void {
             console.log(`Adding event listener at grid[${y}][${x}]`, cell);
             
             cell.cellElement.addEventListener("contextmenu", (event: MouseEvent) => handleRightClickEvent(event, cell));
+
+            console.log(`Added event listener at grid[${y}][${x}]`, cell);
         })
     })
 }

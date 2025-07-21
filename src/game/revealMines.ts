@@ -1,18 +1,19 @@
 import { Cell } from "../types/cell";
-import { revealMine } from "../ui/revealMine";
+import { Mine } from "../types/mine";
+import { revealRemainingMine } from "../ui/revealRemainingMine";
+import { getCell } from "../utils/getCell";
 
-export function revealMines(grid: Cell[][]): void {
+export function revealRemainingMines(grid: Cell[][], mines: Mine[]): void {
 
-    grid.forEach(row => {
+    for (const mine of mines) {
 
-        row.forEach(cell => {
+        const cell: Cell | null = getCell(grid, mine.rowIndex, mine.colIndex);
 
-            if (cell.mine !== null) {
-                
-                revealMine(cell);
-            }
-        })
-    })
+        if (cell !== null && cell.mine !== null) {
+
+            revealRemainingMine(cell);
+        }
+    }
 }
 
 // export function revealMines(grid: Cell[][]): void {
@@ -23,4 +24,14 @@ export function revealMines(grid: Cell[][]): void {
 //             if (cell.hasMine) revealMine(cell);
 //         }
 //     }
+// }
+
+// export function revealMines(grid: Cell[][]): void {
+//     grid.forEach(row => {
+//         row.forEach(cell => {
+//             if (cell.mine !== null) {
+//                 revealMine(cell);
+//             }
+//         })
+//     })
 // }

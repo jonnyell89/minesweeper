@@ -42,4 +42,6 @@ export function revealCell(cell: Cell): void {
     cell.isHidden = false;
 
     pressButton(cell);
+
+    console.log(cell);
 }
