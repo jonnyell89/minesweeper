@@ -1,7 +1,7 @@
 import { MINE_COUNT } from './config';
 import { initDocumentRoot } from './init/initDocumentRoot';
 import { attachGridEventListeners, initGrid, populateGrid } from './init/initGrid'
-import { remainingMines, setRemainingMines } from './state';
+import { setRemainingMines } from './state';
 import './style.scss'
 import { Cell } from './types/cell';
 import { Mine } from './types/mine';
@@ -18,7 +18,3 @@ populateGrid(grid, mines);
 attachGridEventListeners(grid);
 
 setRemainingMines(mines);
-
-console.log(mines);
-
-console.log(remainingMines);

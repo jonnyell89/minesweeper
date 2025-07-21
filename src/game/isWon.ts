@@ -1,4 +1,6 @@
 import { Cell } from "../types/cell";
+import { Mine } from "../types/mine";
+import { revealFlags } from "./revealFlags";
 
 export function isWon(grid: Cell[][]): boolean {
     
@@ -8,6 +10,7 @@ export function isWon(grid: Cell[][]): boolean {
     )
 }
 
-export function playerHasWon(): void {
+export function playerHasWon(grid: Cell[][], mines: Mine[]): void {
 
+    revealFlags(grid, mines);
 }

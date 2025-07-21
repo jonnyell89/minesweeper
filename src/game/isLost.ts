@@ -1,4 +1,6 @@
 import { Cell } from "../types/cell";
+import { Mine } from "../types/mine";
+import { revealRemainingMines } from "./revealRemainingMines";
 
 export function isLost(grid: Cell[][]): boolean {
 
@@ -8,6 +10,7 @@ export function isLost(grid: Cell[][]): boolean {
     )
 }
 
-export function playerHasLost(): void {
+export function playerHasLost(grid: Cell[][], mines: Mine[]): void {
     
+    revealRemainingMines(grid, mines);
 }

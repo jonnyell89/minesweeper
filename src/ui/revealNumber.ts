@@ -3,6 +3,7 @@ import { Cell } from "../types/cell";
 export function revealNumber(cell: Cell): void {
 
     cell.cellElement.textContent = `${cell.adjacentMines}`;
+    cell.cellElement.classList.add("pressed-button");
 
     switch (cell.adjacentMines) {
         

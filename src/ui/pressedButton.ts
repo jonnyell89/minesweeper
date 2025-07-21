@@ -1,13 +1,13 @@
 import { Cell } from "../types/cell";
 
-export function revealBlank(cell: Cell): void {
+export function pressedButton(cell: Cell): void {
 
-    cell.cellElement.classList.add("revealed-blank");
+    cell.cellElement.classList.add("pressed-button");
 }
 
 
 
-// export function revealBlank(cell: Cell): void {
+// export function pressedButton(cell: Cell): void {
 //     cell.cellElement.style.backgroundColor = "#384048";
 //     cell.cellElement.style.borderTop = "none";
 //     cell.cellElement.style.borderRight = "none";

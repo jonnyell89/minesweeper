@@ -8,10 +8,10 @@ export function toggleFlag(cell: Cell): void {
 
     if (cell.isHidden && cell.flag === null) {
 
-        const flag: Flag = getFlag(cell.rowIndex, cell.colIndex);
+        const newFlag: Flag = getFlag(cell.rowIndex, cell.colIndex);
 
-        cell.flag = flag;
-        cell.cellElement.textContent = flag.icon;
+        cell.flag = newFlag;
+        cell.cellElement.textContent = newFlag.icon;
 
     } else if (cell.isHidden && cell.flag !== null) {
 

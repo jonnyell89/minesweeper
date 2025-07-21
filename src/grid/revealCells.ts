@@ -2,6 +2,7 @@ import { Cell } from "../types/cell";
 import { revealNumber } from "../ui/revealNumber";
 import { getCell } from "../utils/getCell";
 import { revealMine } from "../ui/revealMine";
+import { pressedButton } from "../ui/pressedButton";
 
 export function revealCells(grid: Cell[][], cell: Cell): void {
 
@@ -13,9 +14,16 @@ export function revealCells(grid: Cell[][], cell: Cell): void {
 
     if (cell.mine !== null) return revealMine(cell); // CELL CONTAINS MINE
 
+    pressedButton(cell);
+
     if (cell.adjacentMines > 0) return revealNumber(cell); // CELL ADJACENT TO MINE
 
     revealAdjacentCells(grid, cell); // Contains recursive call to revealCells function.
+}
+
+export function revealCell(cell: Cell): void {
+
+    cell.isHidden = false;
 }
 
 export function revealAdjacentCells(grid: Cell[][], cell: Cell): void {
@@ -34,9 +42,4 @@ export function revealAdjacentCells(grid: Cell[][], cell: Cell): void {
             revealCells(grid, adjacentCell);
         }
     }
-}
-
-export function revealCell(cell: Cell): void {
-
-    cell.isHidden = false;
 }
