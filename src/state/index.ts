@@ -15,6 +15,10 @@ export function getRemainingMines(): Mine[] {
     return remainingMines;
 }
 
+export function setRemainingMines(mines: Mine[]): void {
+    remainingMines = mines;
+}
+
 export function clearMines(): void {
     remainingMines = [];
 }

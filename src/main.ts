@@ -1,6 +1,7 @@
 import { MINE_COUNT } from './config';
 import { initDocumentRoot } from './init/initDocumentRoot';
-import { initGrid } from './init/initGrid'
+import { attachGridEventListeners, initGrid, populateGrid } from './init/initGrid'
+import { remainingMines, setRemainingMines } from './state';
 import './style.scss'
 import { Cell } from './types/cell';
 import { Mine } from './types/mine';
@@ -12,3 +13,12 @@ const grid: Cell[][] = initGrid();
 
 const mines: Mine[] = getMineCoordinates(grid, MINE_COUNT);
 
+populateGrid(grid, mines);
+
+attachGridEventListeners(grid);
+
+setRemainingMines(mines);
+
+console.log(mines);
+
+console.log(remainingMines);

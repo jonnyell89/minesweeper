@@ -9,11 +9,11 @@ export function revealCells(grid: Cell[][], cell: Cell): void {
 
     if (cell.flag !== null) return; // CELL CONTAINS FLAG
 
+    revealCell(cell);
+
     if (cell.mine !== null) return revealMine(cell); // CELL CONTAINS MINE
 
     if (cell.adjacentMines > 0) return revealNumber(cell); // CELL ADJACENT TO MINE
-
-    revealCell(cell);
 
     revealAdjacentCells(grid, cell); // Contains recursive call to revealCells function.
 }

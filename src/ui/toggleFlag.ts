@@ -1,4 +1,6 @@
 import { Cell } from "../types/cell";
+import { Flag } from "../types/flag";
+import { getFlag } from "../utils/getFlag";
 
 export function toggleFlag(cell: Cell): void {
 
@@ -6,15 +8,15 @@ export function toggleFlag(cell: Cell): void {
 
     if (cell.isHidden && cell.flag === null) {
 
-        cell.cellElement.textContent = "🚩";
-        cell.hasFlag = true;
-        incrementFlagCount();
+        const flag: Flag = getFlag(cell.rowIndex, cell.colIndex);
+
+        cell.flag = flag;
+        cell.cellElement.textContent = flag.icon;
 
     } else if (cell.isHidden && cell.flag !== null) {
 
+        cell.flag = null;
         cell.cellElement.textContent = "";
-        cell.hasFlag = false;        
-        decrementFlagCount();
     
     }
 

@@ -19,16 +19,16 @@ export function initGrid(): Cell[][] {
     return grid;
 }
 
-export function setupGrid(grid: Cell[][], mines: Mine[]): void {
+export function populateGrid(grid: Cell[][], mines: Mine[]): void {
 
-    assignMines(grid, mines); // Setup
+    assignMines(grid, mines);
 
-    assignNumbers(grid, mines); // Setup
+    assignNumbers(grid, mines);
 }
 
 export function attachGridEventListeners(grid: Cell[][]): void {
 
-    attachLeftClickEvent(grid); // Attach
+    attachLeftClickEvent(grid);
 
-    attachRightClickEvent(grid); // Attach
+    attachRightClickEvent(grid);
 }

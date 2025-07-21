@@ -1,12 +1,6 @@
-import { revealCell } from "../grid/revealCells";
 import { Cell } from "../types/cell";
-import { pressButton } from "./revealedBlank";
 
 export function revealNumber(cell: Cell): void {
-
-    revealCell(cell);
-
-    pressButton(cell);
 
     cell.cellElement.textContent = `${cell.adjacentMines}`;
 
