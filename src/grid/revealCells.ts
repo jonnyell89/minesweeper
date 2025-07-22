@@ -3,20 +3,23 @@ import { revealNumber } from "../ui/revealNumber";
 import { getCell } from "../utils/getCell";
 import { revealMine } from "../ui/revealMine";
 import { pressedButton } from "../ui/pressedButton";
+import { addCellToRevealedCells } from "../state";
 
 export function revealCells(grid: Cell[][], cell: Cell): void {
 
-    if (!cell.isHidden) return; // CELL ALREADY REVEALED
+    if (!cell.isHidden) return; // Returns if cell already revealed.
 
-    if (cell.flag !== null) return; // CELL CONTAINS FLAG
+    if (cell.flag !== null) return; // Returns if cell contains a flag.
 
     revealCell(cell);
 
-    if (cell.mine !== null) return revealMine(cell); // CELL CONTAINS MINE
+    addCellToRevealedCells(cell);
 
-    pressedButton(cell);
+    if (cell.mine !== null) return revealMine(cell); // Returns if cell contains a mine.
 
-    if (cell.adjacentMines > 0) return revealNumber(cell); // CELL ADJACENT TO MINE
+    pressedButton(cell); // UI
+
+    if (cell.adjacentMines > 0) return revealNumber(cell); // Returns if cell contains an adjacent mine.
 
     revealAdjacentCells(grid, cell); // Contains recursive call to revealCells function.
 }

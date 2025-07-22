@@ -1,20 +1,24 @@
-import { MINE_COUNT } from './config';
-import { initDocumentRoot } from './init/initDocumentRoot';
-import { attachGridEventListeners, initGrid, populateGrid } from './init/initGrid'
-import { setRemainingMines } from './state';
 import './style.scss'
+import { MINE_COUNT } from './config';
+import { attachGridEventListeners } from './events/attachGridEventListeners';
+import { populateGrid } from './grid/populateGrid';
+import { initDocumentRoot } from './init/initDocumentRoot';
+import { initGrid } from './init/initGrid'
 import { Cell } from './types/cell';
 import { Mine } from './types/mine';
 import { getMineCoordinates } from './utils/getMineCoordinates';
 
-initDocumentRoot();
+export function gameStart(): void {
 
-const grid: Cell[][] = initGrid();
+    initDocumentRoot();
 
-const mines: Mine[] = getMineCoordinates(grid, MINE_COUNT);
+    const grid: Cell[][] = initGrid();
 
-populateGrid(grid, mines);
+    const mines: Mine[] = getMineCoordinates(grid, MINE_COUNT);
 
-attachGridEventListeners(grid);
+    populateGrid(grid, mines);
 
-setRemainingMines(mines);
+    attachGridEventListeners(grid, mines);    
+}
+
+gameStart();

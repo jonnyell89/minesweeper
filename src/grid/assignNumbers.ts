@@ -27,8 +27,6 @@ function incrementAdjacentMines(grid: Cell[][], rowIndex: number, colIndex: numb
             if (!cell) continue; // CELL OUT OF BOUNDS
             
             if (cell.mine === null) cell.adjacentMines++;
-
-            console.log(`Cell at grid[${cell.rowIndex}][${cell.colIndex}] has ${cell.adjacentMines} adjacent mines.`)
         }
     }
 }

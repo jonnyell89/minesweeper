@@ -6,7 +6,7 @@ export let startGame: boolean = false;
 export let endGame: boolean = false;
 
 export let revealedCells: Cell[] = [];
-export let remainingMines: Mine[] = [];
+export let plantedMines: Mine[] = [];
 export let plantedFlags: Flag[] = [];
 
 export function getRevealedCellCount(): number {
@@ -17,43 +17,43 @@ export function getRevealedCells(): Cell[] {
     return revealedCells;
 }
 
-export function clearCells(): void {
+export function clearRevealedCells(): void {
     revealedCells = [];
 }
 
-export function addCell(cell: Cell): void {
+export function addCellToRevealedCells(cell: Cell): void {
     revealedCells.push(cell);
 }
 
-export function removeCell(cell: Cell): void {
+export function removeCellFromRevealedCells(cell: Cell): void {
     revealedCells = revealedCells.filter(
         c => c.rowIndex !== cell.rowIndex && c.colIndex !== cell.colIndex
     )
 }
 
-export function getRemainingMineCount(): number {
-    return remainingMines.length;
+export function getPlantedMineCount(): number {
+    return plantedMines.length;
 }
 
-export function getRemainingMines(): Mine[] {
-    return remainingMines;
+export function getPlantedMines(): Mine[] {
+    return plantedMines;
 }
 
-export function setRemainingMines(mines: Mine[]): void {
-    remainingMines = [...mines];
+export function setPlantedMines(mines: Mine[]): void {
+    plantedMines = [...mines];
 }
 
-export function clearMines(): void {
-    remainingMines = [];
+export function clearPlantedMines(): void {
+    plantedMines = [];
 }
 
-export function addMine(mine: Mine): void {
-    remainingMines.push(mine);
+export function addMineToPlantedMines(mine: Mine): void {
+    plantedMines.push(mine);
 }
 
-export function removeMine(mine: Mine): void{
-    remainingMines = remainingMines.filter(
-        rm => rm.rowIndex !== mine.rowIndex && rm.colIndex !== mine.colIndex
+export function removeMineFromPlantedMines(mine: Mine): void{
+    plantedMines = plantedMines.filter(
+        pm => pm.rowIndex !== mine.rowIndex && pm.colIndex !== mine.colIndex
     )
 }
 
@@ -69,11 +69,11 @@ export function clearPlantedFlags(): void {
     plantedFlags = [];
 }
 
-export function addFlag(flag: Flag): void {
+export function addFlagToPlantedFlags(flag: Flag): void {
     plantedFlags.push(flag);
 }
 
-export function removeFlag(flag: Flag): void {
+export function removeFlagFromPlantedFlags(flag: Flag): void {
     plantedFlags = plantedFlags.filter(
         pf => pf.rowIndex !== flag.rowIndex && pf.colIndex !== flag.colIndex
     )
