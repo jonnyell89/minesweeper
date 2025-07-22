@@ -1,7 +1,8 @@
-import { isLost, playerHasLost } from "../game/isLost";
-import { isWon, playerHasWon } from "../game/isWon";
+import { GRID_HEIGHT, GRID_WIDTH, MINE_COUNT } from "../config";
+import { hasLost, isLost, playerHasLost } from "../game/isLost";
+import { hasWon, isWon, playerHasWon } from "../game/isWon";
 import { revealCells } from "../grid/revealCells";
-import { getRemainingMines } from "../state";
+import { getRemainingMines, revealedCells } from "../state";
 import { Cell } from "../types/cell";
 import { Mine } from "../types/mine";
 
@@ -20,7 +21,13 @@ export function handleLeftClickEvent(grid: Cell[][], cell: Cell, mines: Mine[]):
 
     revealCells(grid, cell);
 
-    if (isLost(grid)) playerHasLost(grid, mines);
+    if (hasLost(revealedCells)) {
 
-    if (isWon(grid)) playerHasWon(grid, mines);
+        if (isLost(grid)) playerHasLost(grid, mines);
+    }
+
+    if (hasWon(GRID_WIDTH, GRID_HEIGHT, MINE_COUNT, revealedCells)) {
+
+        if (isWon(grid)) playerHasWon(grid, mines);
+    } 
 }
