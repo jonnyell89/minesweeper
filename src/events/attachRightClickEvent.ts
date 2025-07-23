@@ -3,9 +3,9 @@ import { toggleFlag } from "../ui/toggleFlag";
 
 export function attachRightClickEvent(grid: Cell[][]): void {
 
-    grid.forEach((row) => {
+    grid.forEach(row => {
 
-        row.forEach((cell) => {
+        row.forEach(cell => {
             
             cell.cellElement.addEventListener("contextmenu", (event: MouseEvent) => handleRightClickEvent(event, cell));
         })

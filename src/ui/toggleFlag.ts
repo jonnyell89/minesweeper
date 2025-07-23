@@ -5,7 +5,9 @@ import { getFlag } from "../utils/getFlag";
 
 export function toggleFlag(cell: Cell): void {
 
-    if (cell.isHidden && cell.flag === null) {
+    if (!cell.isHidden) return;
+
+    if (cell.flag === null) {
 
         const flag: Flag = getFlag(cell.rowIndex, cell.colIndex);
 
@@ -14,7 +16,7 @@ export function toggleFlag(cell: Cell): void {
 
         addFlagToPlantedFlags(cell.flag);
 
-    } else if (cell.isHidden && cell.flag !== null) {
+    } else if (cell.flag !== null) {
 
         removeFlagFromPlantedFlags(cell.flag);
 
