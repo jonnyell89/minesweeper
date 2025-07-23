@@ -1,12 +1,14 @@
 import { Cell } from "../types/cell";
 import { Flag } from "../types/flag";
-import { Mine } from "../types/mine";
+// import { Mine } from "../types/mine";
 
 export let startGame: boolean = false;
 export let endGame: boolean = false;
+export let timeInterval: number;
+export let timeUnit: number = 1;
 
 export let revealedCells: Cell[] = [];
-export let plantedMines: Mine[] = [];
+// export let plantedMines: Mine[] = [];
 export let plantedFlags: Flag[] = [];
 
 export function getRevealedCellCount(): number {
@@ -31,31 +33,31 @@ export function removeCellFromRevealedCells(cell: Cell): void {
     )
 }
 
-export function getPlantedMineCount(): number {
-    return plantedMines.length;
-}
+// export function getPlantedMineCount(): number {
+//     return plantedMines.length;
+// }
 
-export function getPlantedMines(): Mine[] {
-    return plantedMines;
-}
+// export function getPlantedMines(): Mine[] {
+//     return plantedMines;
+// }
 
-export function setPlantedMines(mines: Mine[]): void {
-    plantedMines = [...mines];
-}
+// export function setPlantedMines(mines: Mine[]): void {
+//     plantedMines = [...mines];
+// }
 
-export function clearPlantedMines(): void {
-    plantedMines = [];
-}
+// export function clearPlantedMines(): void {
+//     plantedMines = [];
+// }
 
-export function addMineToPlantedMines(mine: Mine): void {
-    plantedMines.push(mine);
-}
+// export function addMineToPlantedMines(mine: Mine): void {
+//     plantedMines.push(mine);
+// }
 
-export function removeMineFromPlantedMines(mine: Mine): void{
-    plantedMines = plantedMines.filter(
-        pm => pm.rowIndex !== mine.rowIndex && pm.colIndex !== mine.colIndex
-    )
-}
+// export function removeMineFromPlantedMines(mine: Mine): void{
+//     plantedMines = plantedMines.filter(
+//         pm => pm.rowIndex !== mine.rowIndex && pm.colIndex !== mine.colIndex
+//     )
+// }
 
 export function getPlantedFlagCount(): number {
     return plantedFlags.length;
