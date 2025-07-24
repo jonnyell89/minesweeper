@@ -1,6 +1,6 @@
 import { selectElement } from "../utils/selectElement";
 
-export let timeInterval: number;
+export let timeInterval: ReturnType<typeof setInterval>;
 export let timeUnit: number = 1;
 
 export function initTimer(): HTMLDivElement {
@@ -34,5 +34,7 @@ export function stopTimer(): void {
 
 export function clearTimer(topContainerTimer: HTMLDivElement): void {
 
+    timeUnit = 1;
+    
     topContainerTimer.innerHTML = "";
 }

@@ -4,8 +4,6 @@ import { Flag } from "../types/flag";
 
 export let startGame: boolean = false;
 export let endGame: boolean = false;
-export let timeInterval: number;
-export let timeUnit: number = 1;
 
 export let revealedCells: Cell[] = [];
 // export let plantedMines: Mine[] = [];
