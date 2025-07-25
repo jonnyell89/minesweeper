@@ -3,13 +3,21 @@ import { revealNumber } from "../ui/revealNumber";
 import { getCell } from "../utils/getCell";
 import { revealMine } from "../ui/revealMine";
 import { pressedButton } from "../ui/pressedButton";
-import { addCellToRevealedCells } from "../state";
+import { addCellToRevealedCells, getPlantedFlagCount, getRevealedCellCount } from "../state";
+import { toggleFlag } from "../ui/toggleFlag";
 
 export function revealCells(grid: Cell[][], cell: Cell): void {
 
     if (!cell.isHidden) return; // Returns if cell already revealed.
 
-    if (cell.flag !== null) return; // Returns if cell contains a flag.
+    if (cell.flag !== null) { // During recursion, if cell contains a flag:
+
+        if (cell.mine !== null) return; // Returns if cell contains a mine.
+
+        else toggleFlag(cell); // Otherwise, flag is removed.
+    }
+
+    console.log(`Non-toggle Planted Flag Count: ${getPlantedFlagCount()}`);
 
     revealCell(cell);
 

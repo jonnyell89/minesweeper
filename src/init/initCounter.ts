@@ -10,14 +10,14 @@ export function initCounter(): HTMLDivElement {
     return topContainerCounter;
 }
 
-export function startCounter(topContainerCounter: HTMLDivElement, mineCount: number): void {
+export function setCounter(topContainerCounter: HTMLDivElement, mineCount: number): void {
     
     topContainerCounter.textContent = mineCount.toString();
 }
 
-export function toggleCounter(topContainerCounter: HTMLDivElement, mineCount: number): void {
+export function updateCounter(topContainerCounter: HTMLDivElement, mineCount: number): void {
 
-    topContainerCounter.textContent = `${mineCount - getPlantedFlagCount()}`;
+    topContainerCounter.textContent = (mineCount - getPlantedFlagCount()).toString();
 }
 
 export function clearCounter(topContainerCounter: HTMLDivElement): void {

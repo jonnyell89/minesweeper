@@ -9,10 +9,7 @@ export function revealFlags(grid: Cell[][], mines: Mine[]): void {
 
         const cell: Cell | null = getCell(grid, mine.rowIndex, mine.colIndex);
 
-        if (cell !== null && cell.mine !== null) {
-
-            revealFlag(cell);
-        }
+        if (cell !== null && cell.mine !== null) revealFlag(cell);
     }
 }
 

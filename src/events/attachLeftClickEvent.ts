@@ -1,33 +1,53 @@
-import { GRID_HEIGHT, GRID_WIDTH, MINE_COUNT } from "../config";
-import { hasLost, isLost, playerHasLost } from "../game/isLost";
-import { hasWon, isWon, playerHasWon } from "../game/isWon";
+import { MINE_COUNT } from "../config";
+import { checkGameState } from "../game/checkGameState";
 import { revealCells } from "../grid/revealCells";
-import { getRevealedCells } from "../state";
+import { updateCounter } from "../init/initCounter";
+import { startTimer } from "../init/initTimer";
+import { endGame, startGame, toggleStartGame } from "../state";
 import { Cell } from "../types/cell";
 import { Mine } from "../types/mine";
 
-export function attachLeftClickEvent(grid: Cell[][], mines: Mine[]): void {
+export function attachLeftClickEvent(grid: Cell[][], mines: Mine[], topContainerButton: HTMLButtonElement, topContainerCounter: HTMLDivElement, topContainerTimer: HTMLDivElement): void {
 
     grid.forEach(row => {
 
         row.forEach(cell => {
             
-            cell.cellElement.addEventListener("click", () => handleLeftClickEvent(grid, cell, mines));
+            cell.cellElement.addEventListener("click", () => handleLeftClickEvent(grid, cell, mines, topContainerButton, topContainerCounter, topContainerTimer));
         })
     })
 }
 
-export function handleLeftClickEvent(grid: Cell[][], cell: Cell, mines: Mine[]): void {
+export function handleLeftClickEvent(grid: Cell[][], cell: Cell, mines: Mine[], topContainerButton: HTMLButtonElement, topContainerCounter: HTMLDivElement, topContainerTimer: HTMLDivElement): void {
+
+    if (endGame) return; // Prevents left-clicks after the game has ended.
+
+    if (!startGame) {
+
+        toggleStartGame(); // Toggles game state.
+
+        startTimer(topContainerTimer); // UI
+    }
+
+    if (cell.flag !== null) return; // Prevents left-clicks on cells that contain a flag.
 
     revealCells(grid, cell);
 
-    if (hasLost(getRevealedCells())) {
+    updateCounter(topContainerCounter, MINE_COUNT);
 
-        if (isLost(grid)) playerHasLost(grid, mines);
-    }
+    console.log(`Number of planted flags in the grid: ${countFlagsInGrid(grid)}`);
 
-    if (hasWon(GRID_WIDTH, GRID_HEIGHT, MINE_COUNT, getRevealedCells())) {
+    checkGameState(grid, mines, topContainerButton, topContainerCounter);
+}
 
-        if (isWon(grid)) playerHasWon(grid, mines);
-    }
+export function countFlagsInGrid(grid: Cell[][]): number {
+    
+    let flags: number = 0;
+
+    grid.forEach(row => {
+        row.forEach(cell => {
+            if (cell.flag !== null) flags++;
+        })
+    })
+    return flags;
 }

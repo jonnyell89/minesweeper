@@ -1,5 +1,8 @@
+import { stopTimer } from "../init/initTimer";
+import { toggleEndGame } from "../state";
 import { Cell } from "../types/cell";
 import { Mine } from "../types/mine";
+import { resetButtonLose } from "../ui/resetButtonLose";
 import { revealRemainingMines } from "./revealRemainingMines";
 
 export function hasLost(revealedCells: Cell[]): boolean {
@@ -15,7 +18,13 @@ export function isLost(grid: Cell[][]): boolean {
     )
 }
 
-export function playerHasLost(grid: Cell[][], mines: Mine[]): void {
+export function playerHasLost(grid: Cell[][], mines: Mine[], topContainerButton: HTMLButtonElement): void {
     
     revealRemainingMines(grid, mines);
+
+    resetButtonLose(topContainerButton);
+
+    toggleEndGame();
+
+    stopTimer();
 }

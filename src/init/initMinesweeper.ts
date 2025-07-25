@@ -3,12 +3,13 @@ import { attachGridEvents } from "../events/attachGridEventListeners";
 import { populateGrid } from "../grid/populateGrid";
 import { Cell } from "../types/cell";
 import { Mine } from "../types/mine";
+import { resetButtonStart } from "../ui/resetButtonStart";
 import { getMineCoordinates } from "../utils/getMineCoordinates";
-import { initCounter } from "./initCounter";
+import { initCounter, setCounter } from "./initCounter";
 import { initDocumentRoot } from "./initDocumentRoot";
 import { initGrid } from "./initGrid";
-import { attachResetClickEvent, initResetButton } from "./initResetButton";
-import { initTimer } from "./initTimer";
+import { attachResetClickEvent, initReset } from "./initReset";
+import { initTimer, setTimer } from "./initTimer";
 
 export function initMinesweeper(): void {
 
@@ -18,15 +19,21 @@ export function initMinesweeper(): void {
 
     const mines: Mine[] = getMineCoordinates(grid, MINE_COUNT);
 
-    const timer: HTMLDivElement = initTimer();
-
     const counter: HTMLDivElement = initCounter();
 
-    const resetButton: HTMLButtonElement = initResetButton();
+    setCounter(counter, MINE_COUNT);
+
+    const timer: HTMLDivElement = initTimer();
+
+    setTimer(timer);
+
+    const reset: HTMLButtonElement = initReset();
+
+    resetButtonStart(reset);
 
     populateGrid(grid, mines);
 
-    attachGridEvents(grid, mines);
+    attachGridEvents(grid, mines, reset, counter, timer);
 
-    attachResetClickEvent(resetButton, timer, counter);
+    attachResetClickEvent(reset, counter, timer);
 }

@@ -9,10 +9,7 @@ export function revealRemainingMines(grid: Cell[][], mines: Mine[]): void {
 
         const cell: Cell | null = getCell(grid, mine.rowIndex, mine.colIndex);
 
-        if (cell !== null && cell.mine !== null) {
-
-            revealRemainingMine(cell);
-        }
+        if (cell !== null && cell.mine !== null) revealRemainingMine(cell);
     }
 }
 
