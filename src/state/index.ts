@@ -6,16 +6,28 @@ export let endGame: boolean = false;
 export let revealedCells: Cell[] = [];
 export let plantedFlags: Flag[] = [];
 
-export function toggleStartGame(): void {
+export function startGameTrue(): void {
 
-    if (startGame) startGame = false;
-    else startGame = true;
+    if (!startGame) startGame = true;
+    else console.log(`startGame already set to true.`);
 }
 
-export function toggleEndGame(): void {
+export function startGameFalse(): void {
+
+    if (startGame) startGame = false;
+    else console.log(`startGame already set to false.`);
+}
+
+export function endGameTrue(): void {
+
+    if (!endGame) endGame = true;
+    else console.log(`endGame already set to true.`);
+}
+
+export function endGameFalse(): void {
 
     if (endGame) endGame = false;
-    else endGame = true;
+    else console.log(`endGame already set to false.`);
 }
 
 export function resetGame(): void {

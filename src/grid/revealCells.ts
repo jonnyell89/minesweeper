@@ -3,7 +3,7 @@ import { revealNumber } from "../ui/revealNumber";
 import { getCell } from "../utils/getCell";
 import { revealMine } from "../ui/revealMine";
 import { pressedButton } from "../ui/pressedButton";
-import { addCellToRevealedCells, getPlantedFlagCount, getRevealedCellCount } from "../state";
+import { addCellToRevealedCells, getPlantedFlagCount } from "../state";
 import { toggleFlag } from "../ui/toggleFlag";
 
 export function revealCells(grid: Cell[][], cell: Cell): void {
